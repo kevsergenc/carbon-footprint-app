@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'result_page.dart';
-=======
-import 'result page.dart';
-
->>>>>>> 13f4c592d9fb3af53736f48d4ef2cc82586cf9b7
 
 class SurveyPage extends StatefulWidget {
   const SurveyPage({super.key});
