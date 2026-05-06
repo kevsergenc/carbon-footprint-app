@@ -6,6 +6,7 @@ from pydantic import BaseModel
 from ai_service import generate_recommendation
 from firebase_service import save_to_firebase
 from fastapi.middleware.cors import CORSMiddleware
+from ai_service import generate_recommendation
 
 app = FastAPI()
 
