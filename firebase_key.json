@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "karbon-ayak-izi-app",
+  "private_key_id": "acd705512f5eb8429fe23c796215329cb289e281",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCX3Hz+favW4aHb\nWrFtigTSpqjhYK9wqpK+GM1LnXyRZBCCkGmUUMUNSN8b0MoJ72NNXDOt2auBF3QT\n9FNHye3tAzeRJPPBJ9ncLH7ru653r+NlO8rSM8BRs+kDwgsAvAIXOmJguRw+M4Yu\nn1MiM7C4qL99P821+X5eA0Atx35HUHd1lvPAeSfmtcPf6H05AhovL6Z0RVdXfNqs\n2snRb21PbK1Ff31dAdp14a+ayo8ajNScn3TGvzPMJf+lfgQeUeQSHy84kDxu+rwi\nRZHa57rpW9jVPzti80n9X5WEKU1lO+EoUK7DKQO+fGcakgQrhHlwDpZ4LfbT6Ngc\nEjU6lBuvAgMBAAECggEACXp7GL1KTPKvUgwil+Yt7+H0F4Eb4inbV98fbTFKtZ5r\nw2J1HItACVi7iDZrbdxRs+Hl3duAr2GB3r74tbneTlVNkhMe3bb5i5sBXwBLXvAM\n/uQRADa3scHLcO8bFbQmY0HDIytanm1D2kQagb99L8FkllI1qj6EyyRjzJevg47j\nEILIyxlUMDzRzMnK8bIvQY9wrsRm9aQlLC38RmncRywMhe7EUIJqYmw77a1nRFK5\nlD6GJH7TL9usqSgjAxP+4a/VHRU7drwf6BSExWkdX6BDV/VHE2J7HDIcVeDBhYFT\nXySNN8Az+mQXdhGSoUcFaskQ6d/vHrEKkC4FGY4OvQKBgQDHV/q/1A5afppEW8aP\nsy/7k4l3085PECAFEHLO1cZbjWBkc3+i58zTjeAv92OASpJevcS242Bj+u6ha/5Z\n71BzWMnFJRjLXbGlO89ejI1wkVKgC+9ROjdKjmVYmdKMF+FtzcuzQzj27Q8H2I4D\nA+cqCsDBPQ4YTWBtTrzjINwHmwKBgQDDBb5q0Sd5qkIcMEOdYnPm/JxfXebLEaCv\n6kA2CZOvV7J+1NwyPvazLc+Y3X23flaHFUPLz9iexW2Iir7VMlp3+OfXmnhQnqhF\nWyeCosEhJgXYHIqVySI6qIJ7P/K4hihsIIpHjT3j6dyn4GnpAbXcuPrdhuxc5/dU\n2kBuckP/fQKBgEs3Dw3CXYgXrO2OE2W1Hq22BXCJIpcCZpKCmk8gqi9xMKW2TrqQ\n6+AG8Ego+Ao4GPJWeBrpwDz5OYD+1oHoolpjbf5M+QYC3DyUTLJIJjYLHzn0RuBH\nLwWapPLBV4g0moJr3ChPfPbui3VSaIMKvfZHCGPhPag9ydx0kSDCDUNxAoGBAIWG\nfjxWXafAeakhJnoweViSZmIpQaaRuCoZwcL9xZ8M9Uo/ZVAFqhU97WAlbjjfCFFO\nru9xrEfwtrEBBe2knyp7QgltWqkgJ+fspF2eH4sZpHC2AfDSGFx/GW9XdlD+kdiO\nYv7gZpqQeSJ71SfSovivshtQkK5/p+jx0aGNHJ9lAoGAVZbqr9zGgp/ka8jv3AEU\n3affJS/c+GDAdwiBCuvRVlw81MmKxoH/XV0EbUtn7rg/9EP/ZyPhfO1z9y0tHU18\nZWtYDywWbFbJ7jweB6sa/ZGqWLYz/xpxcWMoL0T+o+puU8mFoWyZ30ydQe6JcxF0\nAYJKrdZIwhxo0SEk9tdORk0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@karbon-ayak-izi-app.iam.gserviceaccount.com",
+  "client_id": "114624459546847075800",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40karbon-ayak-izi-app.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
