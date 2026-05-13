@@ -1,5 +1,3 @@
-
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
@@ -32,7 +30,7 @@ Widget build(BuildContext context){
       children:[
         Positioned.fill(
           child: Image.asset(
-           "assets/images/bg.png",
+           "assets/images/sky.jpg",
           fit:BoxFit.cover,
         ),
         ),
