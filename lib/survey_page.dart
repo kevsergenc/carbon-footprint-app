@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'result_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SurveyPage extends StatefulWidget {
   const SurveyPage({super.key});
@@ -20,6 +22,28 @@ class SurveyPage extends StatefulWidget {
     bool recycleMetal = false;
     bool recycleNone = false;
 
+Future<void> saveSurveyAnswers() async {
+  final user = FirebaseAuth.instance.currentUser;
+
+  if (user == null) {
+    return;
+  }
+
+  await FirebaseFirestore.instance.collection('survey_answers').add({
+    'uid': user.uid,
+    'transport': transport,
+    'diet': diet,
+    'heating': heating,
+    'efficiency': efficiency,
+    'wasteBag': wasteBag,
+    'clothes': clothes,
+    'recycleAll': recycleAll,
+    'recyclePaper': recyclePaper,
+    'recycleMetal': recycleMetal,
+    'recycleNone': recycleNone,
+    'createdAt': Timestamp.now(),
+  });
+}
     final Map<String, String>dietDescriptions = {
       "omnivore":"Hem et hem sebze tüketen beslenme tipi.",
       "pescatarian": "Kırmızı et yerine balık tüketen beslenme tipi.",
@@ -344,14 +368,16 @@ Widget build(BuildContext context){
       SizedBox(
         width:double.infinity,
         child:ElevatedButton(
-          onPressed: () {
-            Navigator.push(context,
-            MaterialPageRoute(
-              builder: (context)=> const ResultPage(),
+          onPressed: () async {
+  await saveSurveyAnswers();
 
-            ),
-            );
-          },
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const ResultPage(),
+    ),
+  );
+},
           style: ElevatedButton.styleFrom(
             backgroundColor:  const Color (0xFF1B5E20),
             foregroundColor: Colors.white,
