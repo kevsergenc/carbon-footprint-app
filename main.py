@@ -63,21 +63,26 @@ def predict(data: CarbonInput):
         else:
             level = "Yüksek"
 
-        try:
-            ai_recommendation = generate_recommendation(data, prediction)
-        except:
-            ai_recommendation = "AI unavailable"
-
-        # Firebase'e kaydet
-        save_to_firebase(data, prediction, ai_recommendation)
-
-
         return {
             "carbon_emission": float(prediction),
-            "level": level,
+            "level": level
+        }
+
+    except Exception as e:
+        return {"error": str(e)}
+    
+@app.post("/recommend")
+
+def recommend(data: CarbonInput):
+
+    try:
+        ai_recommendation = generate_recommendation(data, 0)
+
+        save_to_firebase(data, None, ai_recommendation)
+
+        return {
             "ai_recommendation": ai_recommendation
         }
 
     except Exception as e:
         return {"error": str(e)}
- 
