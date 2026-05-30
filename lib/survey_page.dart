@@ -1,5 +1,8 @@
 import 'package:carbon_footprint_app/result_page.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 class SurveyPage extends StatefulWidget{
   const SurveyPage ({super.key});
    @override
@@ -14,6 +17,17 @@ class SurveyPage extends StatefulWidget{
     "Su Tüketimi": false,
   };
   final Map<String, String> selectedAnswers ={};
+  Future<void> saveSurveyAnswers() async {
+  final user = FirebaseAuth.instance.currentUser;
+
+  if (user == null) return;
+
+  await FirebaseFirestore.instance.collection('survey_answers').add({
+    'uid': user.uid,
+    'answers': selectedAnswers,
+    'createdAt': Timestamp.now(),
+  });
+}
   final List<Map<String, dynamic>> categories= [
     {
       "title":"Ulaşım",
@@ -446,14 +460,16 @@ class SurveyPage extends StatefulWidget{
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context)=> ResultPage(),
-                      ),
-                    );
-                  },
+                  onPressed: () async {
+  await saveSurveyAnswers();
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => ResultPage(),
+    ),
+  );
+},
                   child: const Text(
                     "Sonucu Hesapla",
                     style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,
