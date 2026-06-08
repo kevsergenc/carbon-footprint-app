@@ -6,21 +6,22 @@ from pydantic import BaseModel
 from ai_service import generate_recommendation
 from firebase_service import save_to_firebase
 from fastapi.middleware.cors import CORSMiddleware
-from ai_service import generate_recommendation
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# ML model yükleme
 model = joblib.load("notebooks/carbon_model.pkl")
 
 
+# INPUT Şema
 class CarbonInput(BaseModel):
     Body_Type: str
     Sex: str
@@ -40,49 +41,67 @@ class CarbonInput(BaseModel):
     How_Many_New_Clothes_Monthly: float
 
 
+# TEST ENDPOINT
 @app.get("/")
 def home():
     return {"message": "API çalışıyor"}
 
 
+# PREDICT ENDPOINT
 @app.post("/predict")
 def predict(data: CarbonInput):
 
     try:
+        # Gelen veriyi DataFrame yap
         input_df = pd.DataFrame([data.model_dump()])
 
+        # Tahmin yap
         prediction = model.predict(input_df)[0]
 
+        # Karbon seviyesi
         LOW = 1538
         HIGH = 2768
 
         if prediction < LOW:
             level = "Düşük"
+
         elif prediction < HIGH:
             level = "Orta"
+
         else:
             level = "Yüksek"
 
+        # AI önerileri
+        try:
+            ai_recommendation = generate_recommendation(
+                data,
+                prediction
+            )
+
+        except Exception as ai_error:
+            print("AI ERROR:", ai_error)
+            ai_recommendation = [
+                "AI önerisi oluşturulamadı"
+            ]
+
+        # Firebase kayıt
+        try:
+            save_to_firebase(
+                data,
+                prediction,
+                ai_recommendation
+            )
+
+        except Exception as firebase_error:
+            print("FIREBASE ERROR:", firebase_error)
+
         return {
             "carbon_emission": float(prediction),
-            "level": level
-        }
-
-    except Exception as e:
-        return {"error": str(e)}
-    
-@app.post("/recommend")
-
-def recommend(data: CarbonInput):
-
-    try:
-        ai_recommendation = generate_recommendation(data, 0)
-
-        save_to_firebase(data, None, ai_recommendation)
-
-        return {
+            "level": level,
             "ai_recommendation": ai_recommendation
         }
 
     except Exception as e:
-        return {"error": str(e)}
+        return {
+            "error": str(e)
+        }
