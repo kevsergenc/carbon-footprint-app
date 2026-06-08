@@ -14,9 +14,9 @@ def is_valid(text):
     text = text.lower()
 
     bad_words = [
-        "benz", "coal", "natural_gas", "gasoline",
-        "random", "uydurma", "error",
-        "petrol", "liquefied"
+    "random",
+    "uydurma",
+    "error"
     ]
 
     if any(word in text for word in bad_words):
@@ -54,11 +54,17 @@ Sen bir çevre bilimleri uzmanısın.
 KURALLAR:
 - SADECE karbonu azaltan gerçek öneriler yaz
 - ASLA açıklama yazma
-- Türkçe yaz  
+- Türkçe yaz
 - 5 öneri üret
 - Her öneri farklı kategoriye ait olmalı
--yaptıgın önerileri 'yapabilirsin' gibi bir dil ile söyle
--azaltması yada arttırması gereken alışkanlıkların yerine ne önerdiğini de söyle
+- yaptığın önerileri 'yapabilirsin' gibi bir dil ile söyle
+- azaltması ya da arttırması gereken alışkanlıkların yerine ne önerdiğini de söyle
+- Karbon skoru yüksekse daha güçlü azaltım önerileri ver
+- Karbon skoru düşükse mevcut alışkanlıkları korumaya yönelik öneriler ver
+
+KARBON SKORU:
+{carbon_score}
+
 
 KULLANICI VERİSİ:
 - Ulaşım: {data.Transport}
